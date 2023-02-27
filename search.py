@@ -19,10 +19,10 @@ def selelnium_test(url, save_path, num, word):
 
     # s = Service(r"C:\Users\syyyyyw\Desktop\python\爬虫\chromedriver.exe")
     s = r"C:\Users\syyyyyw\Desktop\python\爬虫\chromedriver.exe"
-    chrome_options = webdriver.ChromeOptions()
+    chrome_options = webdriver.ChromeOptions() 
     chrome_options.add_argument('--headless')
     #chrome_options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(executable_path=s,options=chrome_options)
+    driver = webdriver.Chrome(executable_path=s,options=chrome_options)  #不同版本driver会有略微的不同
     driver.get(url)
 
     for i in range(num):
@@ -42,7 +42,7 @@ def selelnium_test(url, save_path, num, word):
             path = os.path.join(save_path, "%s.jpg" % value)
             urlretrieve(imgurl, path)
             
-            #170修改增加            
+            #170修改增加       防止出现直接改后缀，后续opencv打不开图片的情况
             image    = Image.open(path)
             image = image.convert('RGB')
             os.remove(path)
@@ -83,9 +83,9 @@ if __name__ == '__main__':
     # 'https://www.google.com.hk/search?q={}&tbm=isch&ved=2ahUKEwjxxrjX7NXzAhXlHjQIHQ3hDWUQ2-cCegQIABAA&oq={}&gs_lcp=CgNpbWcQAzoFCAAQgARQq4lNWMamTWDXqE1oA3AAeACAAbUCiAHXG5IBBTItOS4zmAEAoAEBqgELZ3dzLXdpei1pbWewAQDAAQE&sclient=img&ei=72VuYbGTMOW90PEPjcK3qAY&bih=866&biw=1290'
     ]
 
-    content = {"印章背景板":["论文"]}
+    content = {"印章背景板":["论文"]} #"文件夹的名字"：[要搜索的内容]
 
-#170修改
+#170修改 或者分行读取
     # big_label = "卫视logo"
     # with open (r"C:\Users\syyyyyw\Desktop\python\爬虫\卫视txt\卫视.txt",encoding="utf-8") as f:
     #     for line in f.readlines():
